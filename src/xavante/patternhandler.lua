@@ -26,6 +26,7 @@ return function (conf)
          if not conf or type (conf) ~= "table" then return nil end
 
          return function (req, res)
+						req.handler = nil
                   local cap = match_url (req, conf) or {}
                   local h = req.handler or httpd.err_404
                   return h (req, res, cap)
